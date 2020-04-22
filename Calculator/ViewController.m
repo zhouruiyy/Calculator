@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "NSObject+Calculator.h"
+#import "CalculatorMaker.h"
 
 @interface ViewController ()
 
@@ -17,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    int result = [NSObject makeCalculators:^(CalculatorMaker * _Nonnull maker) {
+        maker.add(1).sub(2);
+        maker.block(1);
+    }];
+    
+    NSLog(@"result : %d", result);
 }
 
 
